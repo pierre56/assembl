@@ -125,6 +125,15 @@ class TopPostForm extends React.Component<*, TopPostFormProps, TopPostFormState>
 
   handleInputFocus = promptForLoginOr(() => this.displayForm(true));
 
+  handleInputBlur = () => {
+    // collapse form if both subject and content fields are empty
+    const bodyIsEmpty = !this.state.body || rawContentStateIsEmpty(this.state.body);
+    const subjectIsEmpty = !(this.state.subject && this.state.subject.length);
+    if (subjectIsEmpty && bodyIsEmpty) {
+      this.setState({ isActive: false });
+    }
+  };
+
   updateBody = (newValue) => {
     this.setState({
       body: newValue
@@ -166,6 +175,7 @@ class TopPostForm extends React.Component<*, TopPostFormProps, TopPostFormState>
               maxLength={TEXT_INPUT_MAX_LENGTH}
               handleTxtChange={this.handleSubjectChange}
               handleInputFocus={this.handleInputFocus}
+              handleInputBlur={this.handleInputBlur}
               isActive={this.state.isActive}
             />
           ) : null}
@@ -174,6 +184,7 @@ class TopPostForm extends React.Component<*, TopPostFormProps, TopPostFormState>
               <RichTextEditor
                 rawContentState={this.state.body}
                 handleInputFocus={this.handleInputFocus}
+                handleInputBlur={this.handleInputBlur}
                 maxLength={TEXT_AREA_MAX_LENGTH}
                 placeholder={I18n.t('debate.insert')}
                 updateContentState={this.updateBody}

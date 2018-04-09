@@ -15,6 +15,7 @@ import attachmentsPlugin from './attachmentsPlugin';
 type RichTextEditorProps = {
   rawContentState: RawContentState,
   handleInputFocus: Function,
+  handleInputBlur: Function,
   maxLength: number,
   placeholder: string,
   textareaRef: Function,
@@ -51,6 +52,7 @@ export default class RichTextEditor extends React.Component<Object, RichTextEdit
 
   static defaultProps = {
     handleInputFocus: null,
+    handleInputBlur: null,
     maxLength: 0,
     toolbarPosition: 'top',
     withAttachmentButton: false,
@@ -83,6 +85,7 @@ export default class RichTextEditor extends React.Component<Object, RichTextEdit
       },
       () => {
         this.props.updateContentState(this.getCurrentRawContentState());
+        this.props.handleInputBlur();
       }
     );
   };
