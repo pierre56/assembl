@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import selectors from '../selectors';
 import data from '../../../../../configs/bluenove-server-configs/dev-assembl.config.json';
 
 describe('ressource center E2E test', () => {
@@ -19,25 +20,26 @@ describe('ressource center E2E test', () => {
       await page.waitFor(3000);
       await page.click('input[placeholder=\'Titre de la page\']');
       await page.type('input[placeholder=\'Titre de la page\']', 'titre de la page modifiée');
-      const imagePath = '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload2.jpeg';
+      const imagePath2 = selectors.newRessource.imagePath2;
       const input = await page.$('input[name=header-image]');
-      await input.uploadFile(imagePath);
+      await input.uploadFile(imagePath2);
       await page.waitFor(3000);
-      await page.click('input[placeholder=\'Titre*\']');
-      await page.type('input[placeholder=\'Titre*\']', 'titre du média modifiée');
+      await page.click(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`);
+      await page.type(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`, 'titre du média modifiée');
       await page.click('div[role=\'textbox\']');
-      await page.type('div[role=\'textbox\']', 'Du texte du texte du texte modifiée');
+      await page.type('div[role=\'textbox\']', 'Du texte du texte du texte et encore du texte');
       const imageInput = await page.$('input[name^="image"]');
-      await imageInput.uploadFile(imagePath);
-      //   const documentinput = await page.$('input[name^="document"]');
-      //   await documentinput.uploadFile(filePath);
-      await page.waitFor(3000);
-      await page.click(
-        '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > button'
+      await imageInput.uploadFile(imagePath2);
+      await page.click(`textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`);
+      await page.type(
+        `textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`,
+        'https://www.youtube.com/embed/4DkeNh3YCys'
       );
-      await page.waitFor(3000);
+      await page.waitFor(5000);
+      await page.click(selectors.newRessource.saveButton);
+      await page.waitFor(5000);
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/resourcescenter');
-      await page.waitFor(3000);
+      await page.waitFor(5000);
       await browser.close();
     },
     50000

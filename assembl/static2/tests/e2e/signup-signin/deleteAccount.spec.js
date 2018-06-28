@@ -16,7 +16,7 @@ describe('Sign up/Sign in E2E test', () => {
       await page.click('input[name=password]');
       await page.type('input[name=password]', data.userNewPassword);
       await page.click('button[value=\'Se connecter\']');
-      await page.waitFor(3000);
+      await page.waitFor(10000);
       await page.click('#user-dropdown');
       await page.waitFor(5000);
       await page.click('a[role=menuitem]');
@@ -28,6 +28,6 @@ describe('Sign up/Sign in E2E test', () => {
       await page.waitFor(3000);
       await browser.close();
     },
-    30000
+    50000
   );
 });

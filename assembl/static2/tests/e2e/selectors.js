@@ -23,6 +23,7 @@ const selectors = {
   newRessource: {
     pageTitlePlaceholder: 'Titre de la page',
     imagePath: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload.jpg',
+    imagePath2: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload2.jpeg',
     addRessourceButton:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div' /* eslint-disable */,
     mediaTitlePlaceholder: 'Titre*',
@@ -30,7 +31,9 @@ const selectors = {
     saveButton:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > button' /* eslint-disable */
   },
-  modifyRessource: {}
+  modifyRessource: {
+    mediaTitlePlaceholder: ''
+  }
 };
 
 export default selectors;

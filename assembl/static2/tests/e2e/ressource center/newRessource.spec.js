@@ -27,7 +27,7 @@ describe('ressource center E2E test', () => {
       await page.click(selectors.newRessource.addRessourceButton);
       await page.waitFor(5000);
       await page.click(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`);
-      await page.type(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`);
+      await page.type(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`, 'titre du média');
       await page.click('div[role=\'textbox\']');
       await page.type('div[role=\'textbox\']', 'Du texte du texte du texte');
       await page.click(`textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`);
@@ -42,6 +42,14 @@ describe('ressource center E2E test', () => {
       await page.waitFor(5000);
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/resourcescenter');
       await page.waitFor(5000);
+      const resourceBlock = await page.$eval('.resource-block', el => !!el);
+      expect(resourceBlock).toBe(true);
+      const resourceImage = await page.$eval('.resource-img', el => !!el);
+      expect(resourceImage).toBe(true);
+      const titleSection = await page.$eval('.title-section', el => !!el);
+      expect(titleSection).toBe(true);
+      const resourceText = await page.$eval('.resource-text', el => !!el);
+      expect(resourceText).toBe(true);
       await browser.close();
     },
     50000
