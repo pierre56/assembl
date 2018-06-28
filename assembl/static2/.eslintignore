@@ -2,6 +2,7 @@ build/*
 coverage/*
 node_modules/*
 css/*
+assembl/static2/tests/e2e/*
 js/app/components/styleguide/*
 package.json
 webpack.config.js
