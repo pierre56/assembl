@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import selectors from '../selectors';
+import data from '../../../../../configs/bluenove-server-configs/dev-assembl.config.json';
 
 describe('ressource center E2E test', () => {
   it(
@@ -11,9 +12,9 @@ describe('ressource center E2E test', () => {
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/login/');
       await page.waitFor(5000);
       await page.click('input[name=identifier]');
-      await page.type('input[name=identifier]', selectors.generalInformation.email);
+      await page.type('input[name=identifier]', data.adminEmail);
       await page.click('input[name=password]');
-      await page.type('input[name=password]', selectors.generalInformation.newPassword);
+      await page.type('input[name=password]', data.adminPassword);
       await page.click('button[value=\'Se connecter\']');
       await page.waitFor(5000);
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/administration/resourcesCenter');

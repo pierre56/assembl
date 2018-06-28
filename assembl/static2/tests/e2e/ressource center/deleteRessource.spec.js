@@ -1,12 +1,7 @@
 import puppeteer from 'puppeteer';
+import data from '../../../../../configs/bluenove-server-configs/dev-assembl.config.json';
 
 describe('ressource center E2E test', () => {
-  const lead = {
-    name: 'puppeteertest1',
-    email: 'testassembl@gmail.com',
-    password: 'coucou'
-  };
-
   it(
     'should be able to delete a ressource',
     async () => {
@@ -15,9 +10,9 @@ describe('ressource center E2E test', () => {
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/login/');
       await page.waitFor(3000);
       await page.click('input[name=identifier]');
-      await page.type('input[name=identifier]', lead.email);
+      await page.type('input[name=identifier]', data.adminEmail);
       await page.click('input[name=password]');
-      await page.type('input[name=password]', lead.password);
+      await page.type('input[name=password]', data.adminPassword);
       await page.click('button[value=\'Se connecter\']');
       await page.waitFor(3000);
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/administration/resourcesCenter');

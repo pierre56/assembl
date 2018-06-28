@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import selectors from '../selectors';
+import data from '../../../../../configs/bluenove-server-configs/dev-assembl.config.json';
 
 describe('Sign up/Sign in E2E test', () => {
   it(
@@ -12,9 +12,9 @@ describe('Sign up/Sign in E2E test', () => {
       await page.waitFor(5000);
       // fill up the signin form
       await page.click('input[name=identifier]');
-      await page.type('input[name=identifier]', selectors.generalInformation.email);
+      await page.type('input[name=identifier]', data.userEmail);
       await page.click('input[name=password]');
-      await page.type('input[name=password]', selectors.generalInformation.password);
+      await page.type('input[name=password]', data.userPassword);
       await page.click('button[value=\'Se connecter\']');
       await page.waitFor(5000);
       // check if the profile menu is visible

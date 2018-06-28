@@ -1,5 +1,5 @@
 /* eslint-disable */
-const data = require('../../../../../configs/bluenove-server-configs/dev-assembl.config');
+const data = require('../../../../../configs/bluenove-server-configs/dev-assembl.config.json');
 const { exec } = require('child_process');
 // prettier-ignore
 exec(

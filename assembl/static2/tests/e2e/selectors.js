@@ -1,10 +1,7 @@
 /* eslint-disable */
 const selectors = {
   generalInformation: {
-    name: 'puppeteertest1',
-    email: 'testassembl@gmail.com',
-    password: 'coucou',
-    newPassword: 'newpassword'
+    name: 'puppeteertest1'
   },
   passwordChange: {
     modifyPasswordButton:

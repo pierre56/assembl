@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import selectors from '../selectors';
+import data from '../../../../../configs/bluenove-server-configs/dev-assembl.config.json';
 
 describe('Sign up/Sign in E2E test', () => {
   const randomNumber = Math.floor(Math.random() * Math.floor(100000));
@@ -19,11 +20,11 @@ describe('Sign up/Sign in E2E test', () => {
       await page.click('input[name=username]');
       await page.type('input[name=username]', lead.username);
       await page.click('input[name=email]');
-      await page.type('input[name=email]', selectors.generalInformation.email);
+      await page.type('input[name=email]', data.userEmail);
       await page.click('input[name=password]');
-      await page.type('input[name=password]', selectors.generalInformation.password);
+      await page.type('input[name=password]', data.userPassword);
       await page.click('input[name=password2]');
-      await page.type('input[name=password2]', selectors.generalInformation.password);
+      await page.type('input[name=password2]', data.userPassword);
       await page.click('input[type=checkbox]');
       await page.click('button[type=submit]');
       await page.waitFor(5000);
