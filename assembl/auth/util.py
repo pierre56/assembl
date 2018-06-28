@@ -11,7 +11,7 @@ from pyramid.authentication import SessionAuthenticationPolicy
 
 from assembl.lib.locale import _
 from ..lib.sqla import get_session_maker
-from . import R_SYSADMIN, P_READ, SYSTEM_ROLES
+from . import R_SYSADMIN, P_READ, SYSTEM_ROLES, R_PARTICIPANT
 from .password import verify_data_token, Validity
 from ..models.auth import (
     User, Role, UserRole, LocalUserRole, Permission,
@@ -361,7 +361,7 @@ def users_with_permission(discussion_id, permission, id_only=True):
         return db.query(AgentProfile).filter(AgentProfile.id.in_(user_ids)).all()
 
 
-def maybe_auto_subscribe(user, discussion, check_authorization=True):
+def maybe_auto_subscribe(user, discussion, check_authorization=True, role=R_PARTICIPANT):
     """Auto-subscribe user to notifications if discussion requires it
 
     Idempotent. Currently called at first login, maybe at user invite,
@@ -372,7 +372,7 @@ def maybe_auto_subscribe(user, discussion, check_authorization=True):
             (check_authorization and not discussion.check_authorized_email(user))):
         return False
     # really auto-subscribe user
-    user.subscribe(discussion)
+    user.subscribe(discussion, role=role)
     discussion.db.flush()
     # apply new notifications (on the same thread)
     user.get_notification_subscriptions(discussion.id, on_thread=False)
@@ -486,6 +486,19 @@ def add_user(name, email, password, role, force=False, username=None,
     #     user.get_notification_subscriptions(discussion.id)
     db.flush()
     return (user, created_user, created_localrole)
+
+
+def validate_user(user, session=None):
+    if not session:
+        from assembl.models import Discussion
+        session = Discussion.default_db
+    if not user:
+        return
+    email_accounts = user.email_accounts
+    for e in email_accounts:
+        e.verified = True
+    user.verified = True
+    session.flush()
 
 
 def add_multiple_users_csv(
