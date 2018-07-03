@@ -64,5 +64,6 @@ setup(name='assembl',
       assembl-pshell  = assembl.scripts.pshell:main
       assembl-pserve   = assembl.scripts.pserve:main
       assembl-reindex-all-contents  = assembl.scripts.reindex_all_contents:main
+      assembl-validate-user = assembl.scripts.validate_user:main
       """,
       )
