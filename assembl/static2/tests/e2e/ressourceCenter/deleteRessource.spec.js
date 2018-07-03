@@ -18,6 +18,11 @@ describe('ressource center E2E test', () => {
       await page.waitFor(10000);
       await page.goto('https://dev-assembl.bluenove.com/felixdebate/administration/resourcesCenter');
       await page.waitFor(5000);
+      await page.click('input[placeholder=\'Titre de la page\']');
+      const titleInputValue = await page.$eval('input[placeholder=\'Titre de la page\']', el => el.value);
+      for (let i = 0; i < titleInputValue.length; i + 1) {
+        page.keyboard.press('Backspace');
+      }
       await page.evaluate(() => {
         document.querySelector('.admin-icons').click();
       });

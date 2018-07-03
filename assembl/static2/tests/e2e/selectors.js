@@ -26,6 +26,10 @@ const selectors = {
     imagePath2: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload2.jpeg',
     addRessourceButton:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div' /* eslint-disable */,
+    addSecondRessourceButton:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div.plus.margin-l',
+    inputSecondRessource:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div.form-container.edit--355846 > input',
     mediaTitlePlaceholder: 'Titre*',
     videoTextPlaceholder: 'Vidéo/Slides',
     saveButton:
@@ -33,6 +37,45 @@ const selectors = {
   },
   modifyRessource: {
     mediaTitlePlaceholder: ''
+  },
+  landingPage: {
+    headerTitle:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > section.home-section.header-section > div.max-container.container-fluid > div > div > h1',
+    headerSubtitle:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > section.home-section.header-section > div.max-container.container-fluid > div > div > h4',
+    titleVideoSection:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > section.home-section.video-section > div > div > div.title-section > h1',
+    TitleTwitterSection:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > section.home-section.twitter-section > div > div > div > div > div > div > div.title-section > h1'
+  },
+  voteSession: {
+    voteSessionMenu:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-3.col-xs-12 > div > ul > li:nth-child(8)',
+    headerTitlePlaceholder: 'Titre du bandeau FR*',
+    headerSubtitlePlaceholder: 'Sous-titre du bandeau FR',
+    consigneTitlePlaceholder: 'Titre de la consigne FR*',
+    sectionTitlePlaceholder: 'Titre de la section FR*',
+    nextSectionArrow:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-navbar > div:nth-child(2) > div > div',
+    sectionOneSaveButton:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > button',
+    tokenCheckbox:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-box > div.admin-content > div > div > div:nth-child(1) > label > div',
+    tokenConsignePlaceholder: 'Consigne du vote par jetons*',
+    tokenNumberSelectionDropdown: '#input-dropdown-addon',
+    tokenNamePlaceholder: 'Intitulé du jeton*',
+    tokenNumberPlaceholder: 'Nombre de jetons par personne*',
+    tokenNumberSelection:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-box > div.admin-content > div > div > div.token-vote-form > form > div:nth-child(4) > div > ul > li:nth-child(2) > a',
+    colorSelector:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-box > div.admin-content > div > div > div.token-vote-form > form > div:nth-child(5) > div.token-type-form > div > div.block-picker.no-box-shadow > div:nth-child(3) > div:nth-child(1) > span:nth-child(3) > div',
+    secondTokenNameXpath:
+      '//*[@id="root"]/div/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/form/div[5]/div[3]/div/div[1]/input',
+    secondTokenNumberXpath:
+      '//*[@id="root"]/div/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/form/div[5]/div[3]/div/div[2]/input',
+    secondTokenColorSelector:
+      '//*[@id="root"]/div/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/form/div[5]/div[3]/div/div[3]/div[3]/div[1]/span[3]/div',
+    evolutionCheckbox: '#seeCurrentVotes'
   }
 };
 

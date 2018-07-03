@@ -4,7 +4,7 @@ import data from '../../../../../configs/bluenove-server-configs/dev-assembl.con
 
 describe('ressource center E2E test', () => {
   it(
-    'should be able to add a new ressource',
+    'should be able to add a new ressource with a video',
     async () => {
       const browser = await puppeteer.launch({ headless: false });
       const page = await browser.newPage();
@@ -35,8 +35,6 @@ describe('ressource center E2E test', () => {
         `textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`,
         'https://www.youtube.com/embed/z4PKzz81m5c'
       );
-      const imageInput = await page.$('input[name^="image"]');
-      await imageInput.uploadFile(imagePath);
       await page.waitFor(5000);
       await page.click(selectors.newRessource.saveButton);
       await page.waitFor(5000);
@@ -44,8 +42,6 @@ describe('ressource center E2E test', () => {
       await page.waitFor(5000);
       const resourceBlock = await page.$eval('.resource-block', el => !!el);
       expect(resourceBlock).toBe(true);
-      const resourceImage = await page.$eval('.resource-img', el => !!el);
-      expect(resourceImage).toBe(true);
       const titleSection = await page.$eval('.title-section', el => !!el);
       expect(titleSection).toBe(true);
       const resourceText = await page.$eval('.resource-text', el => !!el);
