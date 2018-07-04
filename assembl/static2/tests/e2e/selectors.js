@@ -57,26 +57,26 @@ const selectors = {
     sectionTitlePlaceholder: 'Titre de la section FR*',
     nextSectionArrow:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-navbar > div:nth-child(2) > div > div',
-    sectionOneSaveButton:
-      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > button',
+    sectionOneSaveButton: '.save-button',
     tokenCheckbox:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-box > div.admin-content > div > div > div:nth-child(1) > label > div',
     tokenConsignePlaceholder: 'Consigne du vote par jetons*',
     tokenNumberSelectionDropdown: '#input-dropdown-addon',
-    tokenNamePlaceholder: 'Intitulé du jeton*',
-    tokenNumberPlaceholder: 'Nombre de jetons par personne*',
+    firstTokenName: '#type-form-0 > div > div:nth-child(1) > input',
+    firstTokenNumber: '#type-form-0 > div > div:nth-child(2) > input',
     tokenNumberSelection:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-box > div.admin-content > div > div > div.token-vote-form > form > div:nth-child(4) > div > ul > li:nth-child(2) > a',
-    colorSelector:
-      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.admin-box > div.admin-content > div > div > div.token-vote-form > form > div:nth-child(5) > div.token-type-form > div > div.block-picker.no-box-shadow > div:nth-child(3) > div:nth-child(1) > span:nth-child(3) > div',
-    secondTokenNameXpath:
-      '//*[@id="root"]/div/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/form/div[5]/div[3]/div/div[1]/input',
-    secondTokenNumberXpath:
-      '//*[@id="root"]/div/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/form/div[5]/div[3]/div/div[2]/input',
-    secondTokenColorSelector:
-      '//*[@id="root"]/div/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div[2]/form/div[5]/div[3]/div/div[3]/div[3]/div[1]/span[3]/div',
-    evolutionCheckbox: '#seeCurrentVotes'
+    colorSelector: '',
+    secondTokenName: '#type-form-1 > div > div:nth-child(1) > input',
+    secondTokenNumber: '#type-form-1 > div > div:nth-child(2) > input',
+    secondTokenColorSelector: '',
+    evolutionCheckbox: '#seeCurrentVotes',
+    propositionTitle: '#proposal-form-1 > div:nth-child(3) > input',
+    propositionDescription:
+      '#proposal-form-1 > div:nth-child(4) > div > div:nth-child(2) > div > div.DraftEditor-editorContainer > div',
+    secondPropositionTitle: '#proposal-form-2 > div:nth-child(3) > input',
+    secondPropositionDescription:
+      '#proposal-form-2 > div:nth-child(4) > div > div:nth-child(2) > div > div.DraftEditor-editorContainer > div'
   }
 };
-
 export default selectors;
