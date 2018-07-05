@@ -25,7 +25,7 @@ const selectors = {
     imagePath: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload.jpg',
     imagePath2: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload2.jpeg',
     addRessourceButton:
-      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div' /* eslint-disable */,
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(3) > div' /* eslint-disable */,
     addSecondRessourceButton:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div.plus.margin-l',
     inputSecondRessource:
@@ -71,12 +71,16 @@ const selectors = {
     secondTokenNumber: '#type-form-1 > div > div:nth-child(2) > input',
     secondTokenColorSelector: '',
     evolutionCheckbox: '#seeCurrentVotes',
+    addPropositionButton:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div.vote-proposals-section > div > div.admin-content > form > div.plus.margin-l',
     propositionTitle: '#proposal-form-1 > div:nth-child(3) > input',
     propositionDescription:
       '#proposal-form-1 > div:nth-child(4) > div > div:nth-child(2) > div > div.DraftEditor-editorContainer > div',
     secondPropositionTitle: '#proposal-form-2 > div:nth-child(3) > input',
     secondPropositionDescription:
-      '#proposal-form-2 > div:nth-child(4) > div > div:nth-child(2) > div > div.DraftEditor-editorContainer > div'
+      '#proposal-form-2 > div:nth-child(4) > div > div:nth-child(2) > div > div.DraftEditor-editorContainer > div',
+    phaseTrash:
+      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div > div:nth-child(3) > div.form-container > form > div:nth-child(4) > div.flex.phase-title-form > div.flex > button:nth-child(2) > span'
   }
 };
 export default selectors;

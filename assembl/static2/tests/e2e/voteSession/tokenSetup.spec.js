@@ -38,7 +38,10 @@ describe('I can set up a vote phase', () => {
       await page.type(selectors.voteSession.secondTokenNumber, '0');
       await page.click(selectors.voteSession.evolutionCheckbox);
       await page.click(selectors.voteSession.sectionOneSaveButton);
-      await page.waitFor(5000);
+      await page.waitFor(3000);
+      const sucessSave = await page.$eval('.showAlert', el => !!el);
+      expect(sucessSave).toBe(true);
+      await page.waitFor(3000);
       await page.click(selectors.voteSession.nextSectionArrow);
       await page.waitFor(5000);
       await browser.close();

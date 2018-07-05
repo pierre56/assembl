@@ -34,7 +34,10 @@ describe('I can set up a vote phase', () => {
       await page.click(`input[placeholder='${selectors.voteSession.sectionTitlePlaceholder}']`);
       await page.type(`input[placeholder='${selectors.voteSession.sectionTitlePlaceholder}']`, 'titre de la section FR');
       await page.click(selectors.voteSession.sectionOneSaveButton);
-      await page.waitFor(5000);
+      await page.waitFor(3000);
+      const sucessSave = await page.$eval('.showAlert', el => !!el);
+      expect(sucessSave).toBe(true);
+      await page.waitFor(2000);
       await page.click(selectors.voteSession.nextSectionArrow);
       await page.waitFor(5000);
       await browser.close();
