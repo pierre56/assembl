@@ -24,16 +24,14 @@ const selectors = {
     pageTitlePlaceholder: 'Titre de la page',
     imagePath: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload.jpg',
     imagePath2: '/Users/felix/projects/assembl/assembl/static2/tests/e2e/images/imageupload2.jpeg',
-    addRessourceButton:
-      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(3) > div' /* eslint-disable */,
-    addSecondRessourceButton:
-      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div.plus.margin-l',
+    addRessourceButton: '#add-media-button' /* eslint-disable */,
+    addSecondRessourceButton: '#add-media-button',
     inputSecondRessource:
       '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > div:nth-child(4) > div.form-container.edit--355846 > input',
-    mediaTitlePlaceholder: 'Titre*',
+    fistMediaTitle: '#media-title-0',
+    secondMediaTitle: '#media-title-1',
     videoTextPlaceholder: 'Vidéo/Slides',
-    saveButton:
-      '#root > div > div.root-child > div > div.app-child > div > div.app-content > div > div.max-container > div > div > div.col-md-8.col-xs-12 > div > button' /* eslint-disable */
+    saveButton: '#save-button > span > button'
   },
   modifyRessource: {
     mediaTitlePlaceholder: ''

@@ -13,8 +13,10 @@ describe('Sign up/Sign in E2E test', () => {
     async () => {
       const browser = await puppeteer.launch({ headless: false });
       const page = await browser.newPage();
-      await page.goto('https://dev-assembl.bluenove.com/felixdebate/signup');
-      await page.waitFor(5000);
+      await page.goto('https://dev-assembl.bluenove.com/felixdebate/signup/', {
+        waitUntil: 'networkidle2',
+        timeout: 50000
+      });
       await page.click('input[name=fullname]');
       await page.type('input[name=fullname]', selectors.generalInformation.name);
       await page.click('input[name=username]');

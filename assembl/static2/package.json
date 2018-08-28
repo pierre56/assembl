@@ -143,12 +143,6 @@
     "transformIgnorePatterns": [
       "/node_modules/[^h][^y][^p]"
     ],
-    "modulePathIgnorePatterns": [
-  "<rootDir>/tests/e2e"
-    ],
-    "coveragePathIgnorePatterns": [
-  "<rootDir>/tests/e2e"
-    ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       "\\.coffee$": "jest-coffee-preprocessor",

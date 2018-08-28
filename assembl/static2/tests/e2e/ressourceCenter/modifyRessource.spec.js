@@ -8,7 +8,10 @@ describe('ressource center E2E test', () => {
     async () => {
       const browser = await puppeteer.launch({ headless: false });
       const page = await browser.newPage();
-      await page.goto('https://dev-assembl.bluenove.com/felixdebate/login/');
+      await page.goto('https://dev-assembl.bluenove.com/felixdebate/login/', {
+        waitUntil: 'networkidle2',
+        timeout: 30000
+      });
       await page.waitFor(3000);
       await page.click('input[name=identifier]');
       await page.type('input[name=identifier]', data.adminEmail);
@@ -16,11 +19,12 @@ describe('ressource center E2E test', () => {
       await page.type('input[name=password]', data.adminPassword);
       await page.click('button[value=\'Se connecter\']');
       await page.waitFor(3000);
-      await page.goto('https://dev-assembl.bluenove.com/felixdebate/administration/resourcesCenter');
-      await page.waitFor(3000);
-      await page.click('input[placeholder=\'Titre de la page\']');
+      await page.goto('https://dev-assembl.bluenove.com/felixdebate/administration/resourcesCenter', {
+        waitUntil: 'networkidle2',
+        timeout: 30000
+      });
       const titleInputValue = await page.$eval('input[placeholder=\'Titre de la page\']', el => el.value);
-      for (let i = 0; i < titleInputValue.length; i + 1) {
+      for (let i = 0; i < titleInputValue.length; i++) {
         page.keyboard.press('Backspace');
       }
       await page.type('input[placeholder=\'Titre de la page\']', 'titre de la page modifiée');
@@ -28,28 +32,17 @@ describe('ressource center E2E test', () => {
       const input = await page.$('input[name=header-image]');
       await input.uploadFile(imagePath2);
       await page.waitFor(3000);
-      await page.click(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`);
-      const mediaInputValue = await page.$eval(
-        `input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`,
-        el => el.value
-      );
-      for (let i = 0; i < mediaInputValue.length; i + 1) {
-        page.keyboard.press('Backspace');
-      }
-
-      await page.type(`input[placeholder='${selectors.newRessource.mediaTitlePlaceholder}']`, 'titre du média modifiée');
+      // const titleInputValue = await page.$eval('input[placeholder=\'Titre de la page\']', el => el.value);
+      // while (titleInputValue.length > 0) {
+      //   await page.press('Backspace');
+      // }
+      await page.click(selectors.newRessource.fistMediaTitle);
+      await page.type(selectors.newRessource.fistMediaTitle, 'titre du média modifiée');
       await page.click('div[role=\'textbox\']');
       await page.type('div[role=\'textbox\']', 'encore du texte');
       const imageInput = await page.$('input[name^="image"]');
       await imageInput.uploadFile(imagePath2);
       await page.click(`textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`);
-      const videoInputValue = await page.$eval(
-        `textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`,
-        el => el.value
-      );
-      for (let i = 0; i < videoInputValue.length; i + 1) {
-        page.keyboard.press('Backspace');
-      }
       await page.type(
         `textarea[placeholder='${selectors.newRessource.videoTextPlaceholder}']`,
         'https://www.youtube.com/embed/4DkeNh3YCys'
@@ -70,6 +63,6 @@ describe('ressource center E2E test', () => {
       expect(resourceText).toBe(true);
       await browser.close();
     },
-    50000
+    70000
   );
 });

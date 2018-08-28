@@ -9,7 +9,10 @@ describe('ressource center E2E test', () => {
       const browser = await puppeteer.launch({ headless: false });
       const page = await browser.newPage();
       await page.setViewport({ width: 1366, height: 768 });
-      await page.goto('https://dev-assembl.bluenove.com/felixdebate/login/');
+      await page.goto('https://dev-assembl.bluenove.com/felixdebate/login/', {
+        waitUntil: 'networkidle2',
+        timeout: 30000
+      });
       await page.waitFor(5000);
       await page.click('input[name=identifier]');
       await page.type('input[name=identifier]', data.adminEmail);
@@ -23,14 +26,21 @@ describe('ressource center E2E test', () => {
       const imageInput = await page.$('input[name^="image"]');
       await imageInput.uploadFile(imagePath);
       await page.waitFor(5000);
+      await page.click(selectors.newRessource.addRessourceButton);
+      await page.waitFor(5000);
+      await page.click(selectors.newRessource.secondMediaTitle);
+      await page.type(selectors.newRessource.secondMediaTitle, 'titre du média 2');
+      await page.waitFor(5000);
       await page.click(selectors.newRessource.saveButton);
       await page.waitFor(5000);
-      await page.goto('https://dev-assembl.bluenove.com/felixdebate/resourcescenter');
-      await page.waitFor(5000);
+      await page.goto('https://dev-assembl.bluenove.com/felixdebate/resourcescenter', {
+        waitUntil: 'networkidle2',
+        timeout: 50000
+      });
       const resourceImage = await page.$eval('.resource-img', el => !!el);
       expect(resourceImage).toBe(true);
       await browser.close();
     },
-    50000
+    70000
   );
 });
