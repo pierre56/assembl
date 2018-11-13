@@ -110,6 +110,10 @@ _package_install = false
 # _user
 # _projectpath
 # _dbdumps_dir
+# For servers that are using wheel-based installations
+# _package_install = true
+# Wheelhouse is installed on the staging server. Can also be reached at dev-assembl.bluenove.com/wheelhouse
+# _wheelhouse = /home/assembl_user/wheelhouse
 _webmaster_user = webmaster
 _sudo_port = 22
 
