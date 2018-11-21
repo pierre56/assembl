@@ -62,6 +62,8 @@ const Flag = ({ locale }: { locale: string }) => {
   case 'tr':
     return <Tr />;
   case 'zh_Hans':
+  case 'zh_Hant':
+  case 'zh_CN':
     return <ZhCN />;
   default:
     return <span>{locale}</span>;
