@@ -834,6 +834,7 @@ const Translations = {
       tableOfThematics: {
         thematicTitle: "Titre de la Thématique",
         headerLabel: "Choisir l'image de fond du bandeau",
+        moduleTypeLabel: "Configuration du module de participation",
         confirmDeletionTitle: "Supprimer la thématique %{title}",
         confirmDeletionBody: "Êtes-vous certain de vouloir supprimer cette thématique ?"
       },
@@ -1792,6 +1793,7 @@ const Translations = {
       tableOfThematics: {
         thematicTitle: "Thematic title",
         headerLabel: "Choose the header background image",
+        moduleTypeLabel: "Participation module configuration",
         confirmDeletionTitle: "Delete %{title} theme",
         confirmDeletionBody: "Are you sure that you wish to delete this theme?"
       },
