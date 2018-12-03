@@ -279,6 +279,7 @@ class DiscussionPreferences(graphene.ObjectType):
     languages = graphene.List(LocalePreference, description=docs.DiscussionPreferences.languages)
     tab_title = graphene.String(description=docs.DiscussionPreferences.tab_title)
     favicon = graphene.Field(Document, description=docs.DiscussionPreferences.favicon)
+    moderation = graphene.Boolean(description=docs.DiscussionPreferences.moderation)
 
     def resolve_tab_title(self, args, context, info):
         return self.get('tab_title', 'Assembl')

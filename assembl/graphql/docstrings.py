@@ -111,6 +111,7 @@ class DiscussionPreferences:
     languages = """A list of LocalePreference metadata objects on the discussion which describe the languages supported by the debate."""
     tab_title = """The title in the tab."""
     favicon = Default.document % ("""The site favicon.""",)
+    moderation = """A Boolean flag indicating whether the moderation is activated or not."""
 
 
 class ResourcesCenter:
