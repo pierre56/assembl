@@ -139,7 +139,7 @@ export async function convertRichTextToVariables(
   };
 }
 
-export function getFileVariable(img: FileValue, initialImg: ?FileValue): FileVariable {
+export function getFileVariable(img: ?FileValue, initialImg: ?FileValue): FileVariable {
   if (initialImg && !img) {
     return 'TO_DELETE';
   }
