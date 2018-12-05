@@ -409,6 +409,7 @@ class Question:
     posts = """The list of all posts under the Question."""
     thematic = """The Thematic that the Question is categorized under. A Question, in the end, is an Idea type, as well as a Thematic."""
     total_sentiments = """The count of total sentiments """
+    has_pending_posts = """Whether the question has pending posts or not."""
 
 
 class QuestionInput:
@@ -635,6 +636,12 @@ class DeletePost:
 class UndeletePost:
     __doc__ = "A mutation called to resurrect Post after being deleted."
     post_id = Default.node_id % "Post" + " This is the Post identifier that is to be resurrected."
+
+
+class ValidatePost:
+
+    __doc__ = "A mutation to validate a submitted Post."
+    post_id = Default.node_id % "Post" + " This is the Post identifier that is to be validated."
 
 
 class AddPostAttachment:
