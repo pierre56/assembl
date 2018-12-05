@@ -6,6 +6,6 @@ query DiscussionPreferences {
       externalUrl
       mimeType
     }
-    moderation
+    withModeration
   }
 }
