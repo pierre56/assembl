@@ -1112,7 +1112,7 @@ class Discussion(DiscussionBoundBase, NamedClassMixin):
         return generate_key
 
     @watson_post_analytics_region.cache_on_arguments(function_key_generator=generate_redis_key)
-    def get_watson_post_analytics(self, num_keywords=5):
+    def get_watson_post_analytics(self, num_keywords=5, display_lang='en'):
         from .post import Post, PublicationStates
         from sqlalchemy.orm import joinedload_all
         fieldnames = ['id', 'date', 'sentiment']
@@ -1126,7 +1126,7 @@ class Discussion(DiscussionBoundBase, NamedClassMixin):
             ).filter_by(publication_state=PublicationStates.PUBLISHED, discussion_id=self.id
             ).order_by(Post.creation_date)
         for post in posts:
-            keywords = list(post.nlp_keywords(limit=num_keywords))
+            keywords = list(post.nlp_keywords(limit=num_keywords, display_lang=display_lang))
             analysis = post.watson_sentiments
             sentiment = analysis[0].sentiment if analysis else None
             row = [post.id, post.creation_date.isoformat(' '), sentiment]
@@ -1139,7 +1139,7 @@ class Discussion(DiscussionBoundBase, NamedClassMixin):
         return fieldnames, results
 
     @watson_idea_analytics_region.cache_on_arguments(function_key_generator=generate_redis_key)
-    def get_watson_idea_analytics(self, num_keywords=5):
+    def get_watson_idea_analytics(self, num_keywords=5, display_lang='en'):
         from .idea import AppendingVisitor
         fieldnames = ['id', 'type', 'title', 'positive sum', 'negative sum', 'num. posts', 'positive avg', 'negative avg']
         for i in range(num_keywords):
@@ -1152,7 +1152,7 @@ class Discussion(DiscussionBoundBase, NamedClassMixin):
             row.extend((pos / num, neg / num))
         else:
             row.extend((None, None))
-        for (kw, score) in self.top_keywords(limit=num_keywords):
+        for (kw, score) in self.top_keywords(limit=num_keywords, display_lang=display_lang):
             row.extend((kw, score))
 
         class WatsonVisitor(AppendingVisitor):
@@ -1167,7 +1167,7 @@ class Discussion(DiscussionBoundBase, NamedClassMixin):
                     row.extend((pos / num, neg / num))
                 else:
                     row.extend((None, None))
-                for (kw, score) in idea.top_keywords(limit=num_keywords):
+                for (kw, score) in idea.top_keywords(limit=num_keywords, display_lang=display_lang):
                     row.extend((kw, score))
                 self.rows.append(row)
         visitor = WatsonVisitor([row])
