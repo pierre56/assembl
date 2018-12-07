@@ -817,6 +817,7 @@ const Translations = {
       },
       languageChoice: "Sélection des langues du débat",
       moderation: "Modération à priori",
+      activateModeration: "Activer la modération",
       ph: {
         title: "Titre",
         quote: "Citation",
@@ -1768,6 +1769,7 @@ const Translations = {
       },
       languageChoice: "Select desired languages below",
       moderation: "Post pending for moderation",
+      activateModeration: "Activate the moderation",
       ph: {
         title: "Title",
         quote: "Quote",
