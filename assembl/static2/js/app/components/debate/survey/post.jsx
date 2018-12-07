@@ -24,6 +24,7 @@ import { withScreenWidth } from '../../common/screenDimensions';
 import PostBody from '../common/post/postBody';
 import hashLinkScroll from '../../../utils/hashLinkScroll';
 import DeletePostButton from '../common/deletePostButton';
+import ValidatePostButton from '../common/validatePostButton';
 import QuestionQuery from '../../../graphql/QuestionQuery.graphql';
 import ThematicQuery from '../../../graphql/ThematicQuery.graphql';
 
@@ -263,6 +264,9 @@ class Post extends React.Component<Props> {
     }
 
     const deleteButton = <DeletePostButton postId={post.id} refetchQueries={refetchQueries} linkClassName="overflow-action" />;
+    const validatePostButton = (
+      <ValidatePostButton postId={post.id} refetchQueries={refetchQueries} linkClassName="overflow-action" />
+    );
 
     return (
       <div className="shown box" id={post.id}>
@@ -296,9 +300,7 @@ class Post extends React.Component<Props> {
             <div className="actions">
               {isModerating ? (
                 <ResponsiveOverlayTrigger placement="top" tooltip={validateMessageTooltip}>
-                  <button onClick={() => this.handleValidatePost(refetchQueries)}>
-                    <span className="assembl-icon-check" />
-                  </button>
+                  {validatePostButton}
                 </ResponsiveOverlayTrigger>
               ) : null}
               {userCanDeleteThisMessage ? (
