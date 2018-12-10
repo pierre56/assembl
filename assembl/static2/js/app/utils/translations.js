@@ -5,8 +5,6 @@ const Translations = {
     here: "ici",
     yes: "oui",
     no: "non",
-    "Number of contributions": "Nombre de messages",
-    "Number of users": "Nombre de contributeurs",
     accept: "Accepter",
     refuse: "Refuser",
     cancel: "Annuler",
@@ -171,6 +169,8 @@ const Translations = {
         PUBLISHED: "Publié"
       },
       Sort: "Trier",
+      number_of_contributions: "Nombre de messages",
+      number_of_users: "Nombre de contributeurs",
       "By relevance": "Par pertinence",
       "Most recent first": "Du plus récent au plus ancien",
       "Oldest first": "Du plus ancien au plus récent",
@@ -1131,6 +1131,8 @@ const Translations = {
         PUBLISHED: "Published"
       },
       Sort: "Sort",
+      number_of_contributions: "Number of contributions",
+      number_of_users: "Number of users",
       "By relevance": "By relevance",
       "Most recent first": "More recent first",
       "Oldest first": "Oldest first",
