@@ -357,6 +357,7 @@ class IdeaAnnouncement:
     title_entries = Default.langstring_entries % ("This is the title of announcement in multiple languages.",)
     body_attachments = Default.string_entry % ("Attachments for the body of announcement in multiple languages.")
     body_entries = Default.langstring_entries % ("This is the body of announcement in multiple languages.")
+    quote_entries = Default.langstring_entries % ("This is the quote of the announcement in multiple languages.")
 
 
 class IdeaMessageColumn:
@@ -811,7 +812,7 @@ class VoteSession:
     Survey,\n
     Multicolumn,\n
     thread)."""
-    discussion_phase_id = "The database identifier of the DiscussionPhase the session is under."
+    idea_id = "The database identifier of the idea the session is under."
     header_image = Default.document % ("The image appearing at the header of the Vote session page.")
     vote_specifications = "A list of VoteSpecifications."
     proposals = "The list of Proposals on which the Users will be allowed to vote."
@@ -830,7 +831,7 @@ class VoteSession:
 
 class UpdateVoteSession:
     __doc__ = """A mutation that allows for existing VoteSessions to be updated."""
-    discussion_phase_id = VoteSession.discussion_phase_id
+    idea_id = VoteSession.idea_id
     header_image = VoteSession.header_image
     see_current_votes = VoteSession.see_current_votes
 
