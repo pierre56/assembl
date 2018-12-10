@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Translate, I18n } from 'react-redux-i18n';
 import { getDomElementOffset, elementContainsSelection } from '../../../../utils/globalFunctions';
+import { connectedUserIsAdmin } from '../../../../utils/permissions';
 import Attachments from '../../../common/attachments';
 import ProfileLine from '../../../common/profileLine';
 import PostActions from '../../common/postActions';
@@ -12,6 +13,7 @@ import PostBody from './postBody';
 import HarvestingMenu from '../../../harvesting/harvestingMenu';
 import type { Props as PostProps } from './index';
 import { getExtractTagId } from '../../../../utils/extract';
+import { PublicationStates } from '../../../../constants';
 
 type Props = PostProps & {
   body: string,
@@ -124,7 +126,8 @@ class PostView extends React.PureComponent<Props, State> {
       sentimentCounts,
       mySentiment,
       attachments,
-      extracts
+      extracts,
+      publicationState
     } = this.props.data.post;
     const {
       borderLeftColor,
@@ -150,6 +153,9 @@ class PostView extends React.PureComponent<Props, State> {
       multiColumns,
       isHarvesting
     } = this.props;
+    if (publicationState === PublicationStates.SUBMITTED_AWAITING_MODERATION && !connectedUserIsAdmin()) {
+      return null;
+    }
     const translate = contentLocale !== originalLocale;
 
     const completeLevelArray = fullLevel ? [rowIndex, ...fullLevel.split('-').map(string => Number(string))] : [rowIndex];
@@ -176,7 +182,10 @@ class PostView extends React.PureComponent<Props, State> {
       ? indirectIdeaContentLinks.map(link => link && link.idea && link.idea.title)
       : [];
     const hasRelatedIdeas = relatedIdeasTitles.length > 0;
-
+    let userName = publicationState === 'PUBLISHED' ? creator.displayName : I18n.t('debate.postAwaitingModeration');
+    if (creator.isDeleted) {
+      userName = I18n.t('deletedUser');
+    }
     return (
       <div
         ref={(p) => {
@@ -208,7 +217,7 @@ class PostView extends React.PureComponent<Props, State> {
               {creator && (
                 <ProfileLine
                   userId={creator.userId}
-                  userName={creator.isDeleted ? I18n.t('deletedUser') : creator.displayName}
+                  userName={userName}
                   creationDate={creationDate}
                   locale={lang}
                   modified={modified}

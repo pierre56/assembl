@@ -2,7 +2,14 @@
 import { type Map } from 'immutable';
 
 import { getDisplayedPhaseIdentifier } from './timeline';
-import { HARVESTABLE_PHASES, ICONS_PATH, PICTURES_LENGTH, PICTURE_BASE_URL, PICTURE_EXTENSION } from '../constants';
+import {
+  HARVESTABLE_PHASES,
+  ICONS_PATH,
+  PICTURES_LENGTH,
+  PICTURE_BASE_URL,
+  PICTURE_EXTENSION,
+  PublicationStates
+} from '../constants';
 
 const getInputValue = (id: string) => {
   const elem = document.getElementById(id);
@@ -299,4 +306,12 @@ export function getIconPath(icon: string, color: string = '') {
 export const getRandomPictureUrl = () => {
   const pictureId = Math.floor(Math.random() * PICTURES_LENGTH) + 1;
   return `${PICTURE_BASE_URL}${pictureId}${PICTURE_EXTENSION}`;
+};
+
+export const getPostPublicationState = (isDebateModerated: boolean, connectedUserIsAdmin: boolean): string => {
+  if (!isDebateModerated || connectedUserIsAdmin) {
+    return PublicationStates.PUBLISHED;
+  }
+
+  return PublicationStates.SUBMITTED_AWAITING_MODERATION;
 };

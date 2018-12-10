@@ -332,7 +332,6 @@ const Translations = {
       panelTitle: "Bienvenue dans la communauté d'Assembl"
     },
     debate: {
-      validateSuccess: "La contribution a bien été validée. Elle est désormais visible par l'ensemble des participants.",
       postAwaitingModeration: "Proposition en attente de modération",
       validateMessage: "Accepter ce message",
       shareThematic: "Partagez cette thématique",
@@ -365,6 +364,7 @@ const Translations = {
       whatYouNeedToKnow: "À retenir",
       syntheses: "Synthèses",
       back: "Retour",
+      validateSuccess: "La contribution a bien été validée. Elle est désormais visible par l'ensemble des participants.",
       survey: {
         loadRecentPosts: "Afficher les propositions récentes",
         themesTitle: "Choisissez une thématique !",
@@ -384,6 +384,8 @@ const Translations = {
         noProposals: "Il n'y a pas de propositions. Soyez le premier à contribuer !",
         submit: "Envoyer",
         postSuccess: "Merci pour votre participation. Votre proposition a bien été envoyée !",
+        postToBeValidated:
+          "Votre contribution a bien été prise en compte. Pour assurer la qualité des échanges, elle sera visible par l'ensemble des participants dès qu'elle aura été revue par l'équipe en charge de l'animation.",
         endPhase: "La phase %{closedPhaseName} est terminée."
       },
       question: {
@@ -401,6 +403,8 @@ const Translations = {
         postDeletedByUser: "Ce message a été supprimé par son auteur.",
         postEdited: "modifié",
         postSuccess: "Merci pour votre participation. Votre message a bien été envoyé !",
+        postToBeValidated:
+          "Votre contribution a bien été prise en compte. Pour assurer la qualité des échanges, elle sera visible par l'ensemble des participants dès qu'elle aura été revue par l'équipe en charge de l'animation.",
         fillSubject: "Veuillez écrire un titre",
         fillBody: "Veuillez écrire un message",
         linkIdea: "Ce post est en lien avec les thématiques suivantes :",
@@ -616,7 +620,7 @@ const Translations = {
       previousStep: "Étape précédente",
       menu: {
         phase: "Phase %{count} - %{description}",
-        language: "Éditer la langue du débat",
+        preferences: "Préférences de la discussion",
         sections: "Éditer les rubriques du débat",
         legalContents: "Éditer les contenus juridiques",
         timeline: "Éditer les phases et modules",
@@ -805,13 +809,15 @@ const Translations = {
       annotation: "Les champs * sont requis.",
       themeNum: "Thématique %{index}",
       discussion: {
-        "0": "Langues utilisées",
+        "0": "Préférences de la discussion",
         "3": "Options d'inscription",
         "4": "Contenus juridiques",
         "5": "Édition des phases et modules",
         "6": "Personnaliser l'interface"
       },
       languageChoice: "Sélection des langues du débat",
+      moderation: "Modération à priori",
+      activateModeration: "Activer la modération",
       ph: {
         title: "Titre",
         quote: "Citation",
@@ -1317,6 +1323,7 @@ const Translations = {
       whatYouNeedToKnow: "What you need to know",
       syntheses: "Syntheses",
       back: "Back",
+      validateSuccess: "The contribution has been validated. It is now visible by all participants.",
       survey: {
         loadRecentPosts: "Load recent proposals",
         themesTitle: "Choose a theme!",
@@ -1336,6 +1343,8 @@ const Translations = {
         noProposals: "There is no point of view for the moment. Be the first to contribute!",
         submit: "Submit",
         postSuccess: "Thanks for your participation. Your proposal has been sent!",
+        postToBeValidated:
+          "Your contribution has been saved. To insure the quality of the debate, it will be visible to all participants once it has been reviewed by the animation team.",
         endPhase: "The %{closedPhaseName} phase is closed."
       },
       question: {
@@ -1353,6 +1362,8 @@ const Translations = {
         postDeletedByUser: "This message has been deleted by the author.",
         postEdited: "edited",
         postSuccess: "Thanks for your participation. Your comment has been sent!",
+        postToBeValidated:
+          "Your contribution has been saved. To insure the quality of the debate, it will be visible to all participants once it has been reviewed by the animators.",
         fillSubject: "Please, write a title",
         fillBody: "Please, write a comment",
         linkIdea: "This post is related to the following themes:",
@@ -1567,7 +1578,7 @@ const Translations = {
       previousStep: "Previous step",
       menu: {
         phase: "Phase %{count} - %{description}",
-        language: "Discussion language",
+        preferences: "Discussion preferences",
         sections: "Edit debate sections",
         legalContents: "Edit legal content",
         timeline: "Edit the phases and modules",
@@ -1750,13 +1761,15 @@ const Translations = {
       annotation: "* Fields are required.",
       themeNum: "Theme %{index}",
       discussion: {
-        "0": "Languages of the Discussion",
+        "0": "Discussion preferences",
         "3": "Registration options",
         "4": "Legal contents",
         "5": "Edition of the phases and modules",
         "6": "Personalize the interface"
       },
       languageChoice: "Select desired languages below",
+      moderation: "Post pending for moderation",
+      activateModeration: "Activate the moderation",
       ph: {
         title: "Title",
         quote: "Quote",
