@@ -451,6 +451,7 @@ class Question(SecureObjectType, SQLAlchemyObjectType):
         from_node=graphene.ID(),
         description=docs.Question.posts)
     total_sentiments = graphene.Int(required=True, description=docs.Question.total_sentiments)
+    parent = graphene.Field(lambda: IdeaUnion, description=docs.Idea.parent)
 
     def resolve_title(self, args, context, info):
         title = resolve_langstring(self.title, args.get('lang'))
@@ -545,6 +546,12 @@ class Question(SecureObjectType, SQLAlchemyObjectType):
 
     def resolve_total_sentiments(self, args, context, info):
         return self.get_total_sentiments()
+
+    def resolve_parent(self, args, context, info):
+        if not self.parents:
+            return None
+
+        return self.parents[0]
 
 
 class Thematic(SecureObjectType, SQLAlchemyObjectType):
