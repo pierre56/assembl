@@ -24,6 +24,7 @@ from .utils import (
     get_attachments_with_purpose,
     get_attachment_with_purpose)
 from .idea import TagResult, SentimentAnalysisResult
+import json
 
 
 class URLMeta(graphene.ObjectType):
@@ -566,7 +567,6 @@ class UpdateDiscussionPreferences(graphene.Mutation):
                 )
 
             if with_moderation is not None:
-                import json
                 preference_data_list = json.loads(discussion.preferences.pref_json)
                 preference_data_list['with_moderation'] = with_moderation
                 discussion.preferences.pref_json = json.dumps(preference_data_list)
