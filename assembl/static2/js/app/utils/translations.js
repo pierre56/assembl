@@ -450,11 +450,19 @@ const Translations = {
         startFictionLabel: "Je partage ma fiction",
         commentFiction: {
           cancel: "Annuler",
+          commentHelper: "Commenter",
           deleteComment: "Supprimer ce message",
           deleteCommentBodyMessage: "Êtes-vous sûr de vouloir supprimer ce message ?",
           editComment: "Modifier ce message",
           imageAlt: "Illustration prenez la parole",
           label: "Commentaires",
+          modal: {
+            title: "Commenter",
+            instructionList: "Vous pouvez commenter et enrichir le texte :",
+            instructionListOne: "Surlignez un extrait du texte",
+            instructionListTwo: "Cliquez sur “Suggérer” pour ouvrir une boîte de commentaire à droite du texte",
+            instructionListThree: "Rédigez votre commentaire écrit, image ou vidéo et validez"
+          },
           numberOfComments: "%{count} messages",
           numberOfComments_0: "Aucun message pour le moment",
           numberOfComments_1: "%{count} message",
@@ -464,8 +472,9 @@ const Translations = {
           title: "Quels sujets sont abordés dans cette fiction ?"
         },
         sideComment: {
-          commentersParticipation: "%{count} participants ont commenté un extrait.",
-          commentersParticipation_1: "%{count} participant a commenté un extrait.",
+          commenterSingleParticipation: "1 participant a commenté un extrait.",
+          commentersParticipation: "%{count} participants ont commenté des extraits.",
+          commentersParticipation_1: "%{count} participant a commenté des extraits.",
           commentLabel: "Votre commentaire",
           submitSuccessMsg: "Votre commentaire a été publié avec succès !",
           editSuccessMsg: "Votre commentaire a été édité avec succès !",
@@ -896,6 +905,7 @@ const Translations = {
           confirmationModal: "Voulez-vous ajouter un module Texte & Multi-média supplémentaire à la page d'accueil ?"
         },
         header: {
+          successSave: "Le contenu du header a été mis à jour avec succès !",
           title: "Header",
           helper: "Personnalisez l'apparence du header de la page d'accueil.",
           titleLabel: "Titre du débat",
@@ -906,7 +916,14 @@ const Translations = {
           headerDescription:
             "L'image doit avoir une hauteur de 450px de haut et une largeur de 1280px. Le poids ne doit pas dépasser 1Mo.",
           logoDescription:
-            "Le logo doit avoir une hauteur maximale de 78px et une largeur maximale de 200px. Le poids ne doit pas dépasser 1Mo. Le fond doit être transparent."
+            "Le logo doit avoir une hauteur maximale de 78px et une largeur maximale de 200px. Le poids ne doit pas dépasser 1Mo. Le fond doit être transparent.",
+          startDate: "Du",
+          endDate: "Au",
+          timePlaceholder: "Optionnel : Entrez les dates du débat",
+          dateDescription:
+            "Pour configurer les dates du debat. Si vous n'avez pas sélectionné de dates, les dates sont déduites des timelines.",
+          startDateError: "La date de début ne peut pas être postérieure à la date de fin",
+          endDateError: "La date de fin ne peut pas être antérieure à la date de début"
         },
         timeline: {
           title: "Timeline",
@@ -1411,11 +1428,19 @@ const Translations = {
         startFictionLabel: "Share a fiction",
         commentFiction: {
           cancel: "Cancel",
+          commentHelper: "Comment",
           deleteComment: "Delete this message",
           deleteCommentBodyMessage: "Are you sure you want to delete this message?",
           editComment: "Edit this message",
           imageAlt: "Let's talk illustration",
           label: "Comments",
+          modal: {
+            title: "Comment",
+            instructionList: "You can comment the text:",
+            instructionListOne: "Underligne a quote",
+            instructionListTwo: "Click “Suggest” to open an input box",
+            instructionListThree: "Write your comment, add an image or video and validate"
+          },
           numberOfComments: "%{count} messages",
           numberOfComments_0: "No message at the moment",
           numberOfComments_1: "%{count} message",
@@ -1425,8 +1450,9 @@ const Translations = {
           title: "What are the topics of the fiction?"
         },
         sideComment: {
-          commentersParticipation: "%{count} participants commented a quote.",
-          commentersParticipation_1: "%{count} participant commented a quote.",
+          commenterSingleParticipation: "1 participant commented a quote.",
+          commentersParticipation: "%{count} participants commented quotes.",
+          commentersParticipation_1: "%{count} participant commented quotes.",
           commentLabel: "Your comment",
           submitSuccessMsg: "Your comment has been published successfully!",
           editSuccessMsg: "Your comment has been edited successfully!",
@@ -1848,6 +1874,7 @@ const Translations = {
           confirmationModal: "Are you sure you want to add a Text & Multimedia module to the landing page?"
         },
         header: {
+          successSave: "The header has been updated successfully!",
           title: "Header",
           helper: "Customize appearance of the header.",
           titleLabel: "Debate title",
@@ -1857,7 +1884,14 @@ const Translations = {
           logoImage: "Choose the header logo",
           headerDescription: "The image must have a height of 450px and a width of 1280px. The weight must not exceed 1 MB.",
           logoDescription:
-            "The logo must have a maximum height of 78px and a maximum width of 200px. The weight must not exceed 1 MB. The background must be transparent."
+            "The logo must have a maximum height of 78px and a maximum width of 200px. The weight must not exceed 1 MB. The background must be transparent.",
+          startDate: "From",
+          endDate: "To",
+          timePlaceholder: "Optional: Enter the dates of the debate",
+          dateDescription:
+            "Please enter the debate's date range. If no dates are selected, the dates are inferred from the timelines created.",
+          startDateError: "The start date cannot be after the end date",
+          endDateError: "The end date cannot be after the start date"
         },
         timeline: {
           title: "Timeline",

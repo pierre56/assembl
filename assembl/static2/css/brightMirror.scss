@@ -33,28 +33,13 @@ $fiction-toolbar-icon-size: 17px;
 // Bright mirror global style
 .bright-mirror-fiction {
   padding-bottom: 30px;
-  padding-top: 30px;
+  padding-top: 15px;
 }
 
 .side-comment-container {
   position: absolute;
   left: 0;
   padding-top: 10px;
-}
-
-.sentiment-container {
-  position: fixed;
-  left: 0;
-
-  .add-sentiment {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .min-sentiment {
-    position: absolute;
-  }
 }
 
 .bright-mirror-comments {
@@ -127,7 +112,7 @@ $fiction-toolbar-icon-size: 17px;
 @media screen and (min-width: $screen-xl-min) {
   .bright-mirror-fiction,
   .bright-mirror-comments {
-    padding: 90px 200px;
+    padding: 30px 200px 70px;
   }
 
   .bright-mirror-comments {
@@ -144,8 +129,10 @@ $fiction-toolbar-icon-size: 17px;
 @import 'components/deletePostButton';
 @import 'components/editPostButton';
 @import 'components/replyToCommentButton';
+@import 'components/commentHelperButton';
 @import 'components/fictionHeader';
 @import 'components/fictionToolbar';
+@import 'components/fictionBodyToolbar';
 @import 'components/fictionBody';
 @import 'components/fictionCommentHeader';
 @import 'components/fictionCommentForm';

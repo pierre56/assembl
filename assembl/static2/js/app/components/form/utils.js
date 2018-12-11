@@ -1,10 +1,19 @@
 // @flow
 import { EditorState } from 'draft-js';
 import type { ApolloClient } from 'react-apollo';
+import moment from 'moment';
 import { I18n } from 'react-redux-i18n';
 import flatMap from 'lodash/flatMap';
 
-import type { I18nValue, FileValue, FileVariable, MutationsPromises, I18nRichTextValue, SaveStatus } from './types.flow';
+import type {
+  I18nValue,
+  FileValue,
+  FileVariable,
+  MutationsPromises,
+  I18nRichTextValue,
+  SaveStatus,
+  DatePickerInput
+} from './types.flow';
 import { convertEditorStateToHTML, convertEntriesToEditorState, uploadNewAttachments } from '../../utils/draftjs';
 import { displayAlert } from '../../utils/utilityManager';
 import { runSerial } from '../administration/saveButton';
@@ -47,6 +56,26 @@ export function convertEntriesToI18nValue<T>(
 
 export function convertEntriesToI18nRichText(entries: RichTextLangstringEntries): I18nRichTextValue {
   return convertEntriesToI18nValue(convertEntriesToEditorState(entries));
+}
+
+export function convertISO8601StringToDateTime(_entry: string): DatePickerInput {
+  if (_entry) {
+    const t = moment(_entry, moment.ISO_8601).utc();
+    // eslint-disable-next-line no-underscore-dangle
+    if (t._isValid) {
+      return { time: t };
+    }
+  }
+  return { time: null };
+}
+
+export function convertDateTimeToISO8601String(_entry: DatePickerInput): string | null {
+  try {
+    if (_entry && _entry.time) return _entry.time.utc().toISOString();
+    return null;
+  } catch (e) {
+    return null;
+  }
 }
 
 export function getValidationState(error: ?string, touched: ?boolean): ?string {
