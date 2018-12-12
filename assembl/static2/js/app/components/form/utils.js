@@ -6,6 +6,7 @@ import { I18n } from 'react-redux-i18n';
 import flatMap from 'lodash/flatMap';
 
 import type {
+  CheckboxListValue,
   I18nValue,
   FileValue,
   FileVariable,
@@ -149,4 +150,8 @@ export function getFileVariable(img: FileValue, initialImg: ?FileValue): FileVar
   // we need to send image: null if we didn't change the image.
   const variab = img && img.externalUrl instanceof File ? img.externalUrl : null;
   return variab;
+}
+
+export function convertCheckboxListValueToVariable(values: CheckboxListValue): Array<string> {
+  return values.filter(item => item.isChecked).map(item => item.value);
 }
