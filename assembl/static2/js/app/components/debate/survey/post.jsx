@@ -6,7 +6,7 @@ import { Translate, I18n } from 'react-redux-i18n';
 import classnames from 'classnames';
 
 import { getConnectedUserId } from '../../../utils/globalFunctions';
-import Permissions, { connectedUserCan } from '../../../utils/permissions';
+import Permissions, { connectedUserCan, connectedUserIsAdmin } from '../../../utils/permissions';
 import PostCreator from './postCreator';
 import Like from '../../svg/like';
 import Disagree from '../../svg/disagree';
@@ -253,23 +253,29 @@ class Post extends React.Component<Props> {
       </div>
     );
 
+    const isPending = publicationState === PublicationStates.SUBMITTED_AWAITING_MODERATION;
+
     let creatorName = '';
     let userCanDeleteThisMessage = false;
     if (post.creator) {
-      const { displayName, isDeleted } = post.creator;
+      const { displayName, isDeleted, userId } = post.creator;
       const connectedUserId = getConnectedUserId();
+      const userIsAdmin = connectedUserIsAdmin();
       userCanDeleteThisMessage =
         (post.creator && (connectedUserId === String(post.creator.userId) && connectedUserCan(Permissions.DELETE_MY_POST))) ||
         connectedUserCan(Permissions.DELETE_POST);
       creatorName = isDeleted ? I18n.t('deletedUser') : displayName || '';
+      const userIsAuthor = userId === connectedUserId;
+      const userCanSeePendingPost = isPending && (userIsAdmin || userIsAuthor);
+      if (!userCanSeePendingPost) {
+        return null;
+      }
     }
 
     const deleteButton = <DeletePostButton postId={post.id} refetchQueries={refetchQueries} linkClassName="action-delete" />;
     const validatePostButton = (
       <ValidatePostButton postId={post.id} refetchQueries={refetchQueries} linkClassName="action-validate" />
     );
-
-    const isPending = publicationState === PublicationStates.SUBMITTED_AWAITING_MODERATION;
 
     return (
       <div className={classnames('shown box', { pending: isPending })} id={post.id}>
