@@ -44,9 +44,11 @@ _ = TranslationStringFactory('assembl')
 
 
 class MessageView(Enum):
-    multiColumns = 'multiColumns'
     brightMirror = 'brightMirror'
+    messageColumns = 'messageColumns'
     survey = 'survey'
+    thread = 'thread'
+    voteSession = 'voteSession'
 
 
 class defaultdictlist(defaultdict):
