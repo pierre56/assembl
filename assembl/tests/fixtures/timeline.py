@@ -34,6 +34,8 @@ def timeline_phase2_interface_v1(request, test_app, test_session, discussion, su
 
     def fin():
         print "finalizer timeline"
+        phase2.previous_event = None
+        phase2.previous_event_id = None
         phase2.delete()
         phase1.delete()
 
