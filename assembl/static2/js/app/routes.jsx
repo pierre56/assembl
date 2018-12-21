@@ -61,13 +61,13 @@ const DebateChild = (props) => {
 const AdminChild = (props: {
   discussionPhaseId: string,
   location: { query: { section?: string, thematicId?: string } },
-  params: { phase: string }
+  params: { phase: string, thematicId: string }
 }) => {
   switch (props.params.phase) {
   case 'discussion':
     return <DiscussionAdmin {...props} section={props.location.query.section} />;
   case 'voteSession':
-    return <VoteSessionAdmin {...props} thematicId={props.location.query.thematicId} section={props.location.query.section} />;
+    return <VoteSessionAdmin {...props} thematicId={props.params.thematicId} section={props.location.query.section} />;
   case 'resourcesCenter':
     return <ResourcesCenterAdmin {...props} />;
   case 'landingPage':
@@ -140,7 +140,10 @@ export default [
         />
         <Route path={routeForRouter('unauthorizedAdministration')} component={UnauthorizedAdministration} />
         <Route path={routeForRouter('administrationRoot')} component={Administration}>
-          <Route path={routeForRouter('adminPhase', false, { phase: ':phase', phaseId: ':phaseId' })} component={AdminChild} />
+          <Route
+            path={routeForRouter('adminPhase', false, { phase: ':phase', phaseId: ':phaseId', thematicId: ':thematicId' })}
+            component={AdminChild}
+          />
         </Route>
       </Route>
     </Route>
